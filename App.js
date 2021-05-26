@@ -4,8 +4,9 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 
 import MainStack from "./stacks/MainStack";
-import SettingStack from "./stacks/SettingStack";
+//import SettingStack from "./stacks/SettingStack";
 import Colors from "./constants/Colors";
+import SettingStack from "./stacks/SettingStack";
 
 const Tab = createBottomTabNavigator();
 
@@ -19,11 +20,10 @@ const App = () => {
 
             if (route.name === "Home") {
               iconName = focused ? "ios-home" : "ios-home-outline";
-            } else if (route.name === "Settings") {
+            } else if (route.name === "Edit") {
               iconName = focused ? "ios-settings" : "ios-settings-outline";
             }
 
-            // You can return any component that you like here!
             return <Ionicons name={iconName} size={size} color={color} />;
           },
         })}
@@ -33,9 +33,8 @@ const App = () => {
         }}
       >
         <Tab.Screen name="Home" component={MainStack} />
-        <Tab.Screen name="Settings" component={SettingStack} />
-        {/* <MainStack />
-        <SettingStack /> */}
+        <Tab.Screen name="Edit" component={SettingStack} />
+        {/* <Tab.Screen name="Edit" component={SettingStack} /> */}
       </Tab.Navigator>
     </NavigationContainer>
   );

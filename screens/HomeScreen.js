@@ -1,5 +1,6 @@
 import React from "react";
 import { Button, StyleSheet, StatusBar, Text, View } from "react-native";
+import Deck from "../components/Deck";
 import Colors from "../constants/Colors";
 
 const HomeScreen = (props) => {
@@ -7,11 +8,12 @@ const HomeScreen = (props) => {
   return (
     <View>
       <StatusBar barStyle="light-content" backgroundColor={Colors.dark} />
-      <Text>Home Screen !!!</Text>
+      <Text style={styles.title}>Start Quiz</Text>
+      <Deck />
       <Button
-        title="Second Screen"
+        title="Quiz"
         onPress={() => {
-          props.navigation.navigate("SecondScreen", { name });
+          props.navigation.navigate("Quiz", { name });
         }}
       />
     </View>
@@ -20,4 +22,11 @@ const HomeScreen = (props) => {
 
 export default HomeScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  title: {
+    fontSize: 20,
+    fontWeight: "bold",
+    textAlign: "center",
+    margin: 20,
+  },
+});

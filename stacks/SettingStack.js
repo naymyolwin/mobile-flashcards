@@ -20,7 +20,7 @@ const SettingStack = () => {
   return (
     <SettingScreenStack.Navigator screenOptions={headerOptions}>
       <SettingScreenStack.Screen
-        name="HomeScreen"
+        name="AddDeck"
         mode="modal"
         component={AddDeckScreen}
         options={{

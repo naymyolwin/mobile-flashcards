@@ -3,7 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { Button } from "react-native";
 
 import HomeScreen from "../screens/HomeScreen";
-import SecondScreen from "../screens/SecondScreen";
+import SecondScreen from "../screens/Quiz";
 import Colors from "../constants/Colors";
 
 const MainScreenStack = createStackNavigator();
@@ -32,7 +32,7 @@ const MainStack = () => {
         }}
       />
       <MainScreenStack.Screen
-        name="SecondScreen"
+        name="Quiz"
         component={SecondScreen}
         options={{ title: "Flash Card Detail", headerBackTitle: "Back" }}
       />

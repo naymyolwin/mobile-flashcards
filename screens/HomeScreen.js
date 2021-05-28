@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, StyleSheet, StatusBar, Text, View } from "react-native";
+import { StyleSheet, StatusBar, Text, View } from "react-native";
 import Deck from "../components/Deck";
 import Colors from "../constants/Colors";
 
@@ -9,9 +9,7 @@ const HomeScreen = (props) => {
     <View>
       <StatusBar barStyle="light-content" backgroundColor={Colors.dark} />
       <Text style={styles.title}>Start Quiz</Text>
-      <Deck />
-      <Button
-        title="Quiz"
+      <Deck
         onPress={() => {
           props.navigation.navigate("Quiz", { name });
         }}
@@ -28,5 +26,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     margin: 20,
+    color: Colors.text,
   },
 });

@@ -3,7 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { Button } from "react-native";
 
 import HomeScreen from "../screens/HomeScreen";
-import SecondScreen from "../screens/Quiz";
+import QuizScreen from "../screens/QuizScreen";
 import Colors from "../constants/Colors";
 
 const MainScreenStack = createStackNavigator();
@@ -26,14 +26,14 @@ const MainStack = () => {
         component={HomeScreen}
         options={{
           title: "Flash Card",
-          headerRight: () => (
-            <Button title="+" color={Colors.primary} onPress={() => {}} />
-          ),
+          // headerRight: () => (
+          //   <Button title="+" color={Colors.primary} onPress={() => {}} />
+          // ),
         }}
       />
       <MainScreenStack.Screen
         name="Quiz"
-        component={SecondScreen}
+        component={QuizScreen}
         options={{ title: "Flash Card Detail", headerBackTitle: "Back" }}
       />
     </MainScreenStack.Navigator>

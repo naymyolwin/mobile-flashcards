@@ -2,15 +2,15 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Card from "../components/Card";
 
-const SecondScreen = (props) => {
+const QuizScreen = (props) => {
   return (
     <View>
-      <Text>2nd Screen {props.route.params.name}</Text>
+      <Text>Quiz Screen {props.route.params.name}</Text>
       <Card />
     </View>
   );
 };
 
-export default SecondScreen;
+export default QuizScreen;
 
 const styles = StyleSheet.create({});

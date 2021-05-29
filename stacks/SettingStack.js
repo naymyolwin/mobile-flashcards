@@ -8,6 +8,8 @@ import AddHeaderButton from "../components/AddHeaderButton";
 import Colors from "../constants/Colors";
 import AddDeckFormScreen from "../screens/AddDeckFormScreen";
 import EditDeckScreen from "../screens/EditDeckScreen";
+import EditCardScreen from "../screens/EditCardScreen";
+import AddCardScreen from "../screens/AddCardScreen";
 
 const SettingScreenStack = createStackNavigator();
 
@@ -32,7 +34,6 @@ const SettingStack = () => {
             <HeaderButtons HeaderButtonComponent={AddHeaderButton}>
               <Item
                 title="Add Deck"
-                iconName={Platform.OS === "android" ? "md-add" : "ios-add"}
                 onPress={() => {
                   navigation.navigate("AddDeckForm");
                 }}
@@ -45,14 +46,38 @@ const SettingStack = () => {
         name="AddDeckForm"
         component={AddDeckFormScreen}
         options={{
-          title: "Add New Deck",
+          title: "Add Card",
         }}
       />
       <SettingScreenStack.Screen
         name="EditDeck"
         component={EditDeckScreen}
+        options={({ navigation }) => ({
+          title: "Flash Card",
+          headerRight: () => (
+            <HeaderButtons HeaderButtonComponent={AddHeaderButton}>
+              <Item
+                title="Add Card"
+                onPress={() => {
+                  navigation.navigate("AddCard");
+                }}
+              />
+            </HeaderButtons>
+          ),
+        })}
+      />
+      <SettingScreenStack.Screen
+        name="EditCard"
+        component={EditCardScreen}
         options={{
-          title: "Edit Deck",
+          title: "Edit Card",
+        }}
+      />
+      <SettingScreenStack.Screen
+        name="AddCard"
+        component={AddCardScreen}
+        options={{
+          title: "Add Card",
         }}
       />
     </SettingScreenStack.Navigator>

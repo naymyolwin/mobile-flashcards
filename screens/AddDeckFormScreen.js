@@ -11,7 +11,7 @@ const AddDeckFormScreen = () => {
       <View>
         <Text style={styles.text}>Please Enter the new Deck Name</Text>
         <MyTextInput placeholder="Deck Name" />
-        <MyButton title="Add" />
+        <MyButton title="Add" style={{ backgroundColor: Colors.light }} />
       </View>
     </ScrollView>
   );

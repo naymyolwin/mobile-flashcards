@@ -5,7 +5,11 @@ import Colors from "../constants/Colors";
 const MyButton = (props) => {
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => {}} style={styles.appButtonContainer}>
+      <TouchableOpacity
+        activeOpacity={0.55}
+        onPress={() => {}}
+        style={{ ...styles.appButtonContainer, ...props.style }}
+      >
         <Text style={styles.appButtonText}>{props.title}</Text>
       </TouchableOpacity>
       {/* <Button {...props} styles={styles.button} /> */}
@@ -20,10 +24,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     width: "100%",
+    padding: 10,
   },
   appButtonContainer: {
     elevation: 8,
-    backgroundColor: Colors.light,
     borderRadius: 10,
     paddingVertical: 10,
     paddingHorizontal: 12,

@@ -28,7 +28,8 @@ const Deck = (props) => {
       <View style={styles.container}>
         <TouchableNativeFeedback
           background={TouchableNativeFeedback.Ripple(
-            "rgba(183,28,28,.1)",
+            //"rgba(183,28,28,.05)",
+            "rgba(0,0,0,.05)",
             false
           )}
           useForeground={true}

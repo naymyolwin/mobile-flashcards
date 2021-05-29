@@ -1,14 +1,16 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableWithoutFeedback, View } from "react-native";
 import Colors from "../constants/Colors";
 
-const Card = () => {
+const Card = (props) => {
   return (
-    <View style={styles.container}>
-      <View style={styles.card}>
-        <Text>Card</Text>
+    <TouchableWithoutFeedback onPress={props.onPress}>
+      <View style={styles.container}>
+        <View style={styles.card}>
+          <Text>{props.text}</Text>
+        </View>
       </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 };
 
@@ -21,7 +23,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 20,
 
-    shadowColor: Colors.light,
+    shadowColor: "#ccc",
     shadowOffset: {
       width: 0,
       height: 9,
@@ -33,8 +35,8 @@ const styles = StyleSheet.create({
     width: "80%",
     height: 200,
     borderWidth: 1,
-    borderColor: Colors.dark,
-    backgroundColor: Colors.light,
+    borderColor: "#ccc",
+    backgroundColor: "white",
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 20,

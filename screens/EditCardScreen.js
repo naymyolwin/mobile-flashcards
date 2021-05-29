@@ -7,6 +7,7 @@ import Colors from "../constants/Colors";
 const EditCardScreen = () => {
   return (
     <View>
+      <Text style={styles.title}>Edit Card</Text>
       <View>
         <MyTextInput placeholder="Question" />
         <MyTextInput placeholder="Answer" />
@@ -28,5 +29,11 @@ const EditCardScreen = () => {
 export default EditCardScreen;
 
 const styles = StyleSheet.create({
-  container: {},
+  title: {
+    fontSize: 20,
+    fontWeight: "bold",
+    textAlign: "center",
+    margin: 20,
+    color: Colors.text,
+  },
 });

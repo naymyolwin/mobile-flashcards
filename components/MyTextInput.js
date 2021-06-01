@@ -10,8 +10,11 @@ const MyTextInput = (props) => {
         underlineColorAndroid="transparent"
         placeholder={props.placeholder}
         placeholderTextColor="grey"
-        autoCapitalize="none"
-        onChangeText={() => {}}
+        autoCapitalize="sentences"
+        value={props.deckInput}
+        onChangeText={(text) => {
+          props.setDeckInput(text);
+        }}
       />
     </View>
   );

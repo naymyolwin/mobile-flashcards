@@ -1,5 +1,5 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import {
   FlatList,
   StyleSheet,
@@ -8,10 +8,18 @@ import {
   View,
   SafeAreaView,
 } from "react-native";
+
+import { fetchData } from "../store/fetchAction";
 import Deck from "../components/Deck";
 import Colors from "../constants/Colors";
 
 const HomeScreen = (props) => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchData());
+  }, [dispatch]);
+
   const decks = useSelector((state) => state.decks.decks);
 
   const decksArray = Object.values(decks).map((deck) => deck);
@@ -19,7 +27,7 @@ const HomeScreen = (props) => {
   const renderItem = ({ item }) => (
     <Deck
       title={item.name}
-      numberOfCard={item.cards.length}
+      numberOfCard={item.card.length}
       onPress={() => {
         props.navigation.navigate("Quiz");
       }}

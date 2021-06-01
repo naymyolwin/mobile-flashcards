@@ -13,12 +13,6 @@ import { store } from "./store/store";
 const Tab = createBottomTabNavigator();
 
 const App = () => {
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(fetchData());
-  // }, [dispatch]);
-
   return (
     <Provider store={store}>
       <NavigationContainer>

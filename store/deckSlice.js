@@ -1,13 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { decks } from "./Data";
 
 const deckSlice = createSlice({
   name: "decks",
-  initialState: { decks: decks },
+  initialState: { decks: {} },
   reducers: {
-    // initilizeDecks(state, action) {
-    //   state.deck = action.payload;
-    // },
+    initializeDecks(state, action) {
+      if (action.payload === null) {
+        state.decks = {};
+      } else {
+        state.decks = action.payload;
+      }
+    },
+    addDeck(state, action) {
+      state.decks = { ...state.decks, ...action.payload };
+    },
   },
 });
 

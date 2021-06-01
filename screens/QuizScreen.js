@@ -1,17 +1,11 @@
 import React from "react";
-import {
-  Animated,
-  StyleSheet,
-  Text,
-  TouchableWithoutFeedback,
-  View,
-} from "react-native";
+import { Animated, StyleSheet, Text, View } from "react-native";
 
 import Card from "../components/Card";
 import MyButton from "../components/MyButton";
 import Colors from "../constants/Colors";
 
-const QuizScreen = (props) => {
+const QuizScreen = () => {
   let animatedValue = new Animated.Value(0);
   let value = 0;
 
@@ -54,11 +48,11 @@ const QuizScreen = (props) => {
       <Text style={styles.title}>Quiz 1/10</Text>
       <View>
         <Animated.View style={[styles.paperFront, frontAnimatedStyle]}>
-          <Card onPress={flipCard} text="Hello" />
+          <Card onPress={flipCard} text="What is Lorem Ipsum?" />
         </Animated.View>
 
         <Animated.View style={[styles.paperBack, backAnimatedStyle]}>
-          <Card onPress={flipCard} text="World" />
+          <Card onPress={flipCard} text="Lorem Ipsum is simply dummy text." />
         </Animated.View>
       </View>
       <View>

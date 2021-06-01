@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
@@ -12,6 +13,12 @@ import { store } from "./store/store";
 const Tab = createBottomTabNavigator();
 
 const App = () => {
+  // const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(fetchData());
+  // }, [dispatch]);
+
   return (
     <Provider store={store}>
       <NavigationContainer>

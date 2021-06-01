@@ -7,7 +7,6 @@ import {
   Platform,
   View,
 } from "react-native";
-import Colors from "../constants/Colors";
 
 const Deck = (props) => {
   if (Platform.OS === "ios") {
@@ -16,7 +15,9 @@ const Deck = (props) => {
         <TouchableOpacity activeOpacity={0.55} onPress={props.onPress}>
           <View style={styles.container}>
             <View style={styles.deck}>
-              <Text>Deck</Text>
+              <Text>
+                {props.title} - {props.numberOfCard} Cards
+              </Text>
             </View>
           </View>
         </TouchableOpacity>
@@ -37,7 +38,9 @@ const Deck = (props) => {
           onPress={props.onPress}
         >
           <View style={styles.deck}>
-            <Text>Deck</Text>
+            <Text>
+              {props.title} - {props.numberOfCard} Cards
+            </Text>
           </View>
         </TouchableNativeFeedback>
       </View>
@@ -65,7 +68,7 @@ const styles = StyleSheet.create({
 
   deck: {
     width: "80%",
-    height: 200,
+    height: 75,
     borderWidth: 1,
     borderColor: "#ccc",
     backgroundColor: "white",

@@ -1,6 +1,5 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { Button } from "react-native";
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 
 import AddDeckScreen from "../screens/AddDeckScreen";
@@ -46,7 +45,7 @@ const SettingStack = () => {
         name="AddDeckForm"
         component={AddDeckFormScreen}
         options={{
-          title: "Add Card",
+          title: "Add Deck",
         }}
       />
       <SettingScreenStack.Screen

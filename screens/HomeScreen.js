@@ -1,19 +1,42 @@
 import React from "react";
-import { StyleSheet, StatusBar, Text, View } from "react-native";
+import { useSelector } from "react-redux";
+import {
+  FlatList,
+  StyleSheet,
+  StatusBar,
+  Text,
+  View,
+  SafeAreaView,
+} from "react-native";
 import Deck from "../components/Deck";
 import Colors from "../constants/Colors";
 
 const HomeScreen = (props) => {
-  const name = "hello";
+  const decks = useSelector((state) => state.decks.decks);
+
+  const decksArray = Object.values(decks).map((deck) => deck);
+
+  const renderItem = ({ item }) => (
+    <Deck
+      title={item.name}
+      numberOfCard={item.cards.length}
+      onPress={() => {
+        props.navigation.navigate("Quiz");
+      }}
+    />
+  );
   return (
     <View>
       <StatusBar barStyle="light-content" backgroundColor={Colors.dark} />
       <Text style={styles.title}>Start Quiz</Text>
-      <Deck
-        onPress={() => {
-          props.navigation.navigate("Quiz", { name });
-        }}
-      />
+      <SafeAreaView>
+        <FlatList
+          data={decksArray}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id}
+          contentContainerStyle={{ paddingBottom: 150 }}
+        />
+      </SafeAreaView>
     </View>
   );
 };

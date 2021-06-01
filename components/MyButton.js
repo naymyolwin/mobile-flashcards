@@ -1,6 +1,5 @@
 import React from "react";
-import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import Colors from "../constants/Colors";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 const MyButton = (props) => {
   return (
@@ -12,7 +11,6 @@ const MyButton = (props) => {
       >
         <Text style={styles.appButtonText}>{props.title}</Text>
       </TouchableOpacity>
-      {/* <Button {...props} styles={styles.button} /> */}
     </View>
   );
 };

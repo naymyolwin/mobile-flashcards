@@ -31,6 +31,7 @@ const HomeScreen = (props) => {
       onPress={() => {
         props.navigation.navigate("Quiz");
       }}
+      edit={false}
     />
   );
   return (

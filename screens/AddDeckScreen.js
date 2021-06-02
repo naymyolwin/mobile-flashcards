@@ -12,7 +12,7 @@ import {
 import Deck from "../components/Deck";
 import Colors from "../constants/Colors";
 
-const AddDeckScreen = (props) => {
+const AddDeckScreen = ({ route, navigation }) => {
   const decks = useSelector((state) => state.decks.decks);
 
   const decksArray = Object.values(decks).map((deck) => deck);
@@ -22,17 +22,26 @@ const AddDeckScreen = (props) => {
       title={item.name}
       numberOfCard={item.card.length}
       onPress={() => {
-        props.navigation.navigate("EditDeck", {
+        navigation.navigate("EditDeck", {
           deckId: item.id,
         });
       }}
+      edit={true}
+      onEdit={() => {
+        navigation.navigate("UpdateDeck", {
+          deckId: item.id,
+        });
+      }}
+      // onPress={() => {
+      //   props.navigation.navigate("EditDeck");
+      // }}
     />
   );
 
   return (
     <View>
       <StatusBar barStyle="light-content" backgroundColor={Colors.dark} />
-      <Text style={styles.title}>Edit Deck</Text>
+      <Text style={styles.title}>Edit Deck HERE</Text>
       <SafeAreaView>
         <FlatList
           data={decksArray}

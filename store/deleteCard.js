@@ -20,11 +20,6 @@ export const deleteCard = async (deck, cardId) => {
   const index = currentDeck[deck].card.indexOf(cardId);
   currentDeck[deck].card.splice(index, 1);
 
-  //   console.log("Card");
-  //   console.log(currentCard);
-  //   console.log("Deck");
-  //   console.log(currentDeck);
-
   const save = async () => {
     return await AsyncStorage.setItem(
       STORAGE_KEY,

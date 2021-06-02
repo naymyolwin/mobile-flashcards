@@ -9,6 +9,7 @@ import AddDeckFormScreen from "../screens/AddDeckFormScreen";
 import EditDeckScreen from "../screens/EditDeckScreen";
 import EditCardScreen from "../screens/EditCardScreen";
 import AddCardScreen from "../screens/AddCardScreen";
+import EditDeck from "../screens/EditDeck";
 
 const SettingScreenStack = createStackNavigator();
 
@@ -79,6 +80,13 @@ const SettingStack = () => {
         component={AddCardScreen}
         options={{
           title: "Add Card",
+        }}
+      />
+      <SettingScreenStack.Screen
+        name="UpdateDeck"
+        component={EditDeck}
+        options={{
+          title: "Update Deck",
         }}
       />
     </SettingScreenStack.Navigator>

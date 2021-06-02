@@ -25,7 +25,6 @@ const cardSlice = createSlice({
     },
     deleteCard(state, action) {
       delete state.cards[action.payload.cardId];
-      console.log("DELETE CARD from cards");
     },
   },
 });

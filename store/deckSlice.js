@@ -19,14 +19,12 @@ const deckSlice = createSlice({
         ...state.decks,
         ...state.decks[action.payload.deckId].card.push(action.payload.cardId),
       };
-      console.log("addNewCard to Deck");
     },
     deleteCard(state, action) {
       const index = state.decks[action.payload.deck].card.indexOf(
         action.payload.cardId
       );
       state.decks[action.payload.deck].card.splice(index, 1);
-      console.log("DELETE Card from deck");
     },
   },
 });

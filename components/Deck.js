@@ -7,17 +7,32 @@ import {
   Platform,
   View,
 } from "react-native";
+import { FontAwesome } from "@expo/vector-icons";
+
+import Colors from "../constants/Colors";
 
 const Deck = (props) => {
+  console.log(props.edit);
   if (Platform.OS === "ios") {
     return (
       <View>
         <TouchableOpacity activeOpacity={0.55} onPress={props.onPress}>
           <View style={styles.container}>
             <View style={styles.deck}>
-              <Text>
-                {props.title} - {props.numberOfCard} Cards
-              </Text>
+              <View>
+                <Text>
+                  {props.title} - {props.numberOfCard} Cards
+                </Text>
+              </View>
+              {props.edit ? (
+                <View style={styles.edit}>
+                  <TouchableOpacity onPress={props.onEdit}>
+                    <View>
+                      <FontAwesome name="edit" size={24} color="black" />
+                    </View>
+                  </TouchableOpacity>
+                </View>
+              ) : null}
             </View>
           </View>
         </TouchableOpacity>
@@ -38,9 +53,20 @@ const Deck = (props) => {
           onPress={props.onPress}
         >
           <View style={styles.deck}>
-            <Text>
-              {props.title} - {props.numberOfCard} Cards
-            </Text>
+            <View>
+              <Text>
+                {props.title} - {props.numberOfCard} Cards
+              </Text>
+            </View>
+            {props.edit ? (
+              <View style={styles.edit}>
+                <TouchableNativeFeedback onPress={props.onEdit}>
+                  <View>
+                    <FontAwesome name="edit" size={24} color="black" />
+                  </View>
+                </TouchableNativeFeedback>
+              </View>
+            ) : null}
           </View>
         </TouchableNativeFeedback>
       </View>
@@ -67,6 +93,7 @@ const styles = StyleSheet.create({
   },
 
   deck: {
+    flexDirection: "row",
     width: "80%",
     height: 75,
     borderWidth: 1,
@@ -77,5 +104,16 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     elevation: 15,
     overflow: "hidden",
+  },
+  edit: {
+    backgroundColor: "red",
+    height: 75,
+    width: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    borderLeftColor: "#ccc",
+    borderLeftWidth: 1,
+    position: "absolute",
+    right: 0,
   },
 });

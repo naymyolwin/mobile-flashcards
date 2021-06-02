@@ -25,6 +25,9 @@ const AddCardScreen = ({ route, navigation }) => {
     dispatch(cardActions.addCard(newCard));
     dispatch(deckActions.addNewCard({ cardId: cardId, deckId: deckId.deckId }));
     setCard(newCard);
+    setAnswer("");
+    setQuestion("");
+    navigation.navigate("EditDeck");
   };
 
   return (

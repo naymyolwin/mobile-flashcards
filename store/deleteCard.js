@@ -2,7 +2,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { STORAGE_KEY } from "./localStoreKey";
 
-export const updateCard = async (deck, cardId, question, answer) => {
+export const deleteCard = async (deck, cardId) => {
   const getData = async () => {
     try {
       const jsonValue = await AsyncStorage.getItem(STORAGE_KEY);
@@ -16,16 +16,14 @@ export const updateCard = async (deck, cardId, question, answer) => {
   const currentCard = Data["cards"];
   const currentDeck = Data["decks"];
 
-  // console.log("before");
-  //  console.log(currentCard);
-  currentCard[cardId] = {
-    "deck": deck,
-    "id": cardId,
-    "question": question,
-    "answer": answer,
-  };
-  // console.log("after");
-  // console.log(currentCard);
+  delete currentCard[cardId];
+  const index = currentDeck[deck].card.indexOf(cardId);
+  currentDeck[deck].card.splice(index, 1);
+
+  //   console.log("Card");
+  //   console.log(currentCard);
+  //   console.log("Deck");
+  //   console.log(currentDeck);
 
   const save = async () => {
     return await AsyncStorage.setItem(

@@ -16,14 +16,16 @@ const cardSlice = createSlice({
       state.cards = { ...state.cards, ...action.payload };
     },
     updateCard(state, action) {
-      const newObj = {
-        "id": action.payload.id,
+      state.cards[action.payload.cardId] = {
         "deck": action.payload.deck,
+        "id": action.payload.cardId,
         "question": action.payload.question,
         "answer": action.payload.answer,
       };
-      state.cards[action.payload.id] = newObj;
-      console.log("UPDATE CARD");
+    },
+    deleteCard(state, action) {
+      delete state.cards[action.payload.cardId];
+      console.log("DELETE CARD from cards");
     },
   },
 });

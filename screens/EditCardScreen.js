@@ -6,6 +6,8 @@ import MyTextInput from "../components/MyTextInput";
 import Colors from "../constants/Colors";
 import { updateCard } from "../store/updateCard";
 import { cardActions } from "../store/cardSlice";
+import { deleteCard } from "../store/deleteCard";
+import { deckActions } from "../store/deckSlice";
 
 const EditCardScreen = ({ route, navigation }) => {
   const { cardId } = route.params;
@@ -19,10 +21,28 @@ const EditCardScreen = ({ route, navigation }) => {
 
   const saveHandler = () => {
     updateCard(deck, cardId, question, answer);
-    dispatch(cardActions.updateCard(deck, cardId, question, answer));
+    dispatch(
+      cardActions.updateCard({
+        deck: deck,
+        cardId: cardId,
+        question: question,
+        answer: answer,
+      })
+    );
+    navigation.navigate("EditDeck");
   };
 
-  const deleteHandler = () => {};
+  const deleteHandler = () => {
+    deleteCard(deck, cardId);
+    dispatch(cardActions.deleteCard(cardId));
+    dispatch(
+      deckActions.deleteCard({
+        deck: deck,
+        cardId: cardId,
+      })
+    );
+    navigation.navigate("EditDeck");
+  };
 
   return (
     <View>

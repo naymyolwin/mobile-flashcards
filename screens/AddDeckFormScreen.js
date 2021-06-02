@@ -4,32 +4,28 @@ import MyButton from "../components/MyButton";
 import MyTextInput from "../components/MyTextInput";
 import { useDispatch } from "react-redux";
 
-import { setDecks } from "../store/setItems";
+import { setDecks } from "../store/setDecks";
 import Colors from "../constants/Colors";
 import { deckActions } from "../store/deckSlice";
 import { createNewDeck } from "../store/createNewDeck";
 
 const AddDeckFormScreen = (props) => {
-  const [deckInput, setDeckInput] = useState("");
+  const [deck, setDeck] = useState("");
 
   const dispatch = useDispatch();
 
   const addDeckHandler = () => {
-    const newDeck = createNewDeck(deckInput);
+    const newDeck = createNewDeck(deck);
     dispatch(deckActions.addDeck(newDeck));
     setDecks(newDeck);
-    setDeckInput("");
+    setDeck("");
     props.navigation.navigate("AddDeck");
   };
   return (
     <ScrollView>
       <View>
         <Text style={styles.text}>Please Enter the new Deck Name</Text>
-        <MyTextInput
-          placeholder="Deck Name"
-          input={deckInput}
-          setDeckInput={setDeckInput}
-        />
+        <MyTextInput placeholder="Deck Name" input={deck} setInput={setDeck} />
         <MyButton
           title="Add"
           style={{ backgroundColor: Colors.light }}

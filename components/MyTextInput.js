@@ -11,9 +11,9 @@ const MyTextInput = (props) => {
         placeholder={props.placeholder}
         placeholderTextColor="grey"
         autoCapitalize="sentences"
-        value={props.deckInput}
+        value={props.input}
         onChangeText={(text) => {
-          props.setDeckInput(text);
+          props.setInput(text);
         }}
       />
     </View>

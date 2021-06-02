@@ -51,14 +51,16 @@ const SettingStack = () => {
       <SettingScreenStack.Screen
         name="EditDeck"
         component={EditDeckScreen}
-        options={({ navigation }) => ({
+        options={({ route, navigation }) => ({
           title: "Flash Card",
           headerRight: () => (
             <HeaderButtons HeaderButtonComponent={AddHeaderButton}>
               <Item
                 title="Add Card"
                 onPress={() => {
-                  navigation.navigate("AddCard");
+                  navigation.navigate("AddCard", {
+                    deckId: route.params,
+                  });
                 }}
               />
             </HeaderButtons>

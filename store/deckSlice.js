@@ -14,6 +14,13 @@ const deckSlice = createSlice({
     addDeck(state, action) {
       state.decks = { ...state.decks, ...action.payload };
     },
+    addNewCard(state, action) {
+      state.decks = {
+        ...state.decks,
+        ...state.decks[action.payload.deckId].card.push(action.payload.cardId),
+      };
+      console.log("addNewCard to Deck");
+    },
   },
 });
 

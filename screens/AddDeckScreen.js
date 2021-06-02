@@ -1,20 +1,46 @@
 import React from "react";
-import { StyleSheet, StatusBar, Text, View } from "react-native";
+import { useSelector } from "react-redux";
+import {
+  FlatList,
+  StyleSheet,
+  StatusBar,
+  Text,
+  View,
+  SafeAreaView,
+} from "react-native";
 
 import Deck from "../components/Deck";
 import Colors from "../constants/Colors";
 
 const AddDeckScreen = (props) => {
-  const name = "hello";
+  const decks = useSelector((state) => state.decks.decks);
+
+  const decksArray = Object.values(decks).map((deck) => deck);
+
+  const renderItem = ({ item }) => (
+    <Deck
+      title={item.name}
+      numberOfCard={item.card.length}
+      onPress={() => {
+        props.navigation.navigate("EditDeck", {
+          deckId: item.id,
+        });
+      }}
+    />
+  );
+
   return (
     <View>
       <StatusBar barStyle="light-content" backgroundColor={Colors.dark} />
       <Text style={styles.title}>Edit Deck</Text>
-      <Deck
-        onPress={() => {
-          props.navigation.navigate("EditDeck", { name });
-        }}
-      />
+      <SafeAreaView>
+        <FlatList
+          data={decksArray}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id}
+          contentContainerStyle={{ paddingBottom: 150 }}
+        />
+      </SafeAreaView>
     </View>
   );
 };

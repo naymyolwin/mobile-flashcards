@@ -1,27 +1,59 @@
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import MyButton from "../components/MyButton";
 import MyTextInput from "../components/MyTextInput";
 import Colors from "../constants/Colors";
+import { updateCard } from "../store/updateCard";
+import { cardActions } from "../store/cardSlice";
 
-const EditCardScreen = () => {
+const EditCardScreen = ({ route, navigation }) => {
+  const { cardId } = route.params;
+  const dispatch = useDispatch();
+
+  const card = useSelector((state) => state.cards.cards);
+
+  const [question, setQuestion] = useState(card[cardId].question);
+  const [answer, setAnswer] = useState(card[cardId].answer);
+  const deck = card[cardId].deck;
+
+  const saveHandler = () => {
+    updateCard(deck, cardId, question, answer);
+    dispatch(cardActions.updateCard(deck, cardId, question, answer));
+  };
+
+  const deleteHandler = () => {};
+
   return (
     <View>
       <Text style={styles.title}>Edit Card</Text>
-      <View>
-        <MyTextInput placeholder="Question" />
-        <MyTextInput placeholder="Answer" />
-      </View>
-      <View style={styles.container}>
-        <MyButton
-          title="Delete"
-          style={{ backgroundColor: Colors.light, width: "60%" }}
-        />
-        <MyButton
-          title="Save"
-          style={{ backgroundColor: "green", width: "60%" }}
-        />
-      </View>
+
+      <ScrollView>
+        <View>
+          <MyTextInput
+            placeholder="Question"
+            input={question}
+            setInput={setQuestion}
+          />
+          <MyTextInput
+            placeholder="Answer"
+            input={answer}
+            setInput={setAnswer}
+          />
+        </View>
+        <View style={styles.container}>
+          <MyButton
+            title="Delete"
+            style={{ backgroundColor: Colors.light, width: "60%" }}
+            onPress={deleteHandler}
+          />
+          <MyButton
+            title="Save"
+            style={{ backgroundColor: "green", width: "60%" }}
+            onPress={saveHandler}
+          />
+        </View>
+      </ScrollView>
     </View>
   );
 };

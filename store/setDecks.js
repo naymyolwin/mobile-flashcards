@@ -3,7 +3,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { STORAGE_KEY } from "./localStoreKey";
 
 export const setDecks = async (deck) => {
-  const getDecks = async () => {
+  const getData = async () => {
     try {
       const jsonValue = await AsyncStorage.getItem(STORAGE_KEY);
       return jsonValue !== null ? JSON.parse(jsonValue) : null;
@@ -12,7 +12,8 @@ export const setDecks = async (deck) => {
     }
   };
 
-  const currentDeck = await getDecks();
+  const Data = await getData();
+  const currentDeck = Data !== null ? Data["decks"] : null;
 
   let saveObj;
 
@@ -23,7 +24,10 @@ export const setDecks = async (deck) => {
   }
 
   const save = async () => {
-    return await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(saveObj));
+    return await AsyncStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({ ["decks"]: saveObj })
+    );
   };
 
   try {

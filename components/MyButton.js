@@ -5,6 +5,7 @@ const MyButton = (props) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity
+        disabled={props.disabled}
         activeOpacity={0.55}
         onPress={props.onPress}
         style={{ ...styles.appButtonContainer, ...props.style }}

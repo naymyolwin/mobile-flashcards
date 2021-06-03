@@ -12,7 +12,7 @@ import {
 import Deck from "../components/Deck";
 import Colors from "../constants/Colors";
 
-const AddDeckScreen = ({ route, navigation }) => {
+const AddDeckScreen = ({ navigation }) => {
   const decks = useSelector((state) => state.decks.decks);
 
   const decksArray = Object.values(decks).map((deck) => deck);

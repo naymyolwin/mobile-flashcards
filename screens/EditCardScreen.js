@@ -15,9 +15,9 @@ const EditCardScreen = ({ route, navigation }) => {
 
   const card = useSelector((state) => state.cards.cards);
 
-  const [question, setQuestion] = useState(card[cardId].question);
-  const [answer, setAnswer] = useState(card[cardId].answer);
-  const deck = card[cardId].deck;
+  const [question, setQuestion] = useState(card[cardId]?.question);
+  const [answer, setAnswer] = useState(card[cardId]?.answer);
+  const deck = card[cardId]?.deck;
 
   const saveHandler = () => {
     updateCard(deck, cardId, question, answer);
@@ -29,12 +29,13 @@ const EditCardScreen = ({ route, navigation }) => {
         answer: answer,
       })
     );
+
     navigation.navigate("EditDeck");
   };
 
   const deleteHandler = () => {
     deleteCard(deck, cardId);
-    dispatch(cardActions.deleteCard(cardId));
+    dispatch(cardActions.deleteCard({ cardId: cardId }));
     dispatch(
       deckActions.deleteCard({
         deck: deck,
@@ -46,8 +47,7 @@ const EditCardScreen = ({ route, navigation }) => {
 
   return (
     <View>
-      <Text style={styles.title}>Edit Card</Text>
-
+      <Text style={styles.title}>Edit Card Form</Text>
       <ScrollView>
         <View>
           <MyTextInput

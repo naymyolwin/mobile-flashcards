@@ -12,7 +12,6 @@ import { FontAwesome } from "@expo/vector-icons";
 import Colors from "../constants/Colors";
 
 const Deck = (props) => {
-  console.log(props.edit);
   if (Platform.OS === "ios") {
     return (
       <View>
@@ -27,7 +26,7 @@ const Deck = (props) => {
               {props.edit ? (
                 <View style={styles.edit}>
                   <TouchableOpacity onPress={props.onEdit}>
-                    <View>
+                    <View style={styles.touch}>
                       <FontAwesome name="edit" size={24} color="black" />
                     </View>
                   </TouchableOpacity>
@@ -61,7 +60,7 @@ const Deck = (props) => {
             {props.edit ? (
               <View style={styles.edit}>
                 <TouchableNativeFeedback onPress={props.onEdit}>
-                  <View>
+                  <View style={styles.touch}>
                     <FontAwesome name="edit" size={24} color="black" />
                   </View>
                 </TouchableNativeFeedback>
@@ -106,7 +105,6 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
   edit: {
-    backgroundColor: "red",
     height: 75,
     width: 50,
     alignItems: "center",
@@ -115,5 +113,11 @@ const styles = StyleSheet.create({
     borderLeftWidth: 1,
     position: "absolute",
     right: 0,
+  },
+  touch: {
+    height: 75,
+    width: 50,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

@@ -20,8 +20,6 @@ const AddCardScreen = ({ route, navigation }) => {
   const onSaveHandler = () => {
     const newCard = createNewCard(question, answer, deckId.deckId);
     const cardId = Object.keys(newCard)[0];
-    // dispatch(deckActions.addDeck(newDeck));
-    // setDecks(newDeck);
     dispatch(cardActions.addCard(newCard));
     dispatch(deckActions.addNewCard({ cardId: cardId, deckId: deckId.deckId }));
     setCard(newCard);
@@ -33,7 +31,7 @@ const AddCardScreen = ({ route, navigation }) => {
   return (
     <View>
       <Text style={styles.title}>Add Card</Text>
-      {/* <Text>{deckId.deckId}</Text> */}
+      <Text>{deckId.deckId}</Text>
       <ScrollView>
         <View>
           <MyTextInput

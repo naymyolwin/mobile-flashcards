@@ -7,6 +7,7 @@ import {
   Text,
   View,
   SafeAreaView,
+  Button,
 } from "react-native";
 
 import { fetchData } from "../store/fetchAction";
@@ -21,6 +22,7 @@ const HomeScreen = (props) => {
   }, [dispatch]);
 
   const decks = useSelector((state) => state.decks.decks);
+  const cards = useSelector((state) => state.cards.cards);
 
   const decksArray = Object.values(decks).map((deck) => deck);
 
@@ -46,6 +48,12 @@ const HomeScreen = (props) => {
           contentContainerStyle={{ paddingBottom: 150 }}
         />
       </SafeAreaView>
+      <Button
+        title="State"
+        onPress={() => {
+          console.log(decks), console.log(cards);
+        }}
+      />
     </View>
   );
 };

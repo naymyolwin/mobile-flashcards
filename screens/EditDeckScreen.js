@@ -22,6 +22,7 @@ const EditDeckScreen = ({ route, navigation }) => {
       onPress={() => {
         navigation.navigate("EditCard", {
           cardId: item.id,
+          deckId: deckId,
         });
       }}
     />
@@ -29,7 +30,7 @@ const EditDeckScreen = ({ route, navigation }) => {
 
   return (
     <View>
-      <Text style={styles.title}>Edit Card</Text>
+      <Text style={styles.title}>Edit Card !!!!</Text>
       <FlatList
         data={cardsArray}
         renderItem={renderItem}

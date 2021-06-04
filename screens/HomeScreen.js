@@ -7,7 +7,6 @@ import {
   Text,
   View,
   SafeAreaView,
-  Button,
 } from "react-native";
 
 import { fetchData } from "../store/fetchAction";
@@ -30,8 +29,11 @@ const HomeScreen = (props) => {
     <Deck
       title={item.name}
       numberOfCard={item.card.length}
+      disabled={item.card.length > 0 ? false : true}
       onPress={() => {
-        props.navigation.navigate("Quiz");
+        props.navigation.navigate("Quiz", {
+          deckId: item.id,
+        });
       }}
       edit={false}
     />
@@ -48,12 +50,6 @@ const HomeScreen = (props) => {
           contentContainerStyle={{ paddingBottom: 150 }}
         />
       </SafeAreaView>
-      <Button
-        title="State"
-        onPress={() => {
-          console.log(decks), console.log(cards);
-        }}
-      />
     </View>
   );
 };

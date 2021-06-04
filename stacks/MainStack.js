@@ -4,6 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "../screens/HomeScreen";
 import QuizScreen from "../screens/QuizScreen";
 import Colors from "../constants/Colors";
+import Score from "../components/Score";
 
 const MainScreenStack = createStackNavigator();
 
@@ -33,6 +34,14 @@ const MainStack = () => {
         options={{
           title: "Flash Card Detail",
           headerBackTitle: "Back",
+        }}
+      />
+      <MainScreenStack.Screen
+        name="Score"
+        component={Score}
+        options={{
+          title: "Your Score",
+          headerLeft: () => null,
         }}
       />
     </MainScreenStack.Navigator>

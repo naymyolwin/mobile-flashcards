@@ -16,16 +16,12 @@ export const updateCard = async (deck, cardId, question, answer) => {
   const currentCard = Data["cards"];
   const currentDeck = Data["decks"];
 
-  // console.log("before");
-  //  console.log(currentCard);
   currentCard[cardId] = {
     "deck": deck,
     "id": cardId,
     "question": question,
     "answer": answer,
   };
-  // console.log("after");
-  // console.log(currentCard);
 
   const save = async () => {
     return await AsyncStorage.setItem(
@@ -36,7 +32,6 @@ export const updateCard = async (deck, cardId, question, answer) => {
 
   try {
     save();
-    //   console.log("saving card and updating deck");
   } catch (error) {
     console.log("Something went wrong saving card to local store");
   }

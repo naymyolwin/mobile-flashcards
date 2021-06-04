@@ -39,7 +39,6 @@ export const setCard = async (card) => {
 
   try {
     save();
-    console.log("saving card and updating deck");
   } catch (error) {
     console.log("Something went wrong saving card to local store");
   }

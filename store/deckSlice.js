@@ -30,11 +30,7 @@ const deckSlice = createSlice({
       state.decks[action.payload.id].name = action.payload.name;
     },
     deleteDeck(state, action) {
-      console.log("before delete");
-      console.log(state.decks);
       delete state.decks[action.payload.id];
-      console.log("after delete");
-      console.log(state.decks);
     },
   },
 });

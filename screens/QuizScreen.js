@@ -1,11 +1,52 @@
-import React from "react";
-import { Animated, StyleSheet, Text, View } from "react-native";
+import React, { useState, useMemo } from "react";
+import { useSelector } from "react-redux";
+import { Animated, StyleSheet, Text, View, Platform } from "react-native";
 
 import Card from "../components/Card";
 import MyButton from "../components/MyButton";
 import Colors from "../constants/Colors";
 
-const QuizScreen = () => {
+const QuizScreen = ({ route, navigation }) => {
+  const { deckId } = route.params;
+  const decks = useSelector((state) => state.decks.decks);
+  const cards = useSelector((state) => state.cards.cards);
+  const [index, setIndex] = useState(0);
+  const [correct, setCorrect] = useState(0);
+  const [inCorrect, setIncorrect] = useState(0);
+  const [clickedCorrect, setClickedCorrect] = useState(false);
+  const [clickedIncorrect, setClickedIncorrect] = useState(false);
+
+  const cardList = decks[deckId].card;
+
+  const cardsArray = cardList.map((c) => {
+    return cards[c];
+  });
+
+  const correctHandler = () => {
+    setCorrect(correct + 1);
+    setClickedCorrect(true);
+  };
+
+  const inCorrectHandler = () => {
+    setIncorrect(inCorrect + 1);
+    setClickedIncorrect(true);
+  };
+  const nextHandler = () => {
+    if (Platform.OS === "android") {
+      animatedValue.setValue(0);
+    }
+    if (index === cardsArray.length - 1) {
+      return navigation.navigate("Score", {
+        score: ((correct / (correct + inCorrect)) * 100).toFixed(2),
+      });
+    }
+
+    let i = index < cardsArray.length ? index + 1 : index;
+    setIndex(i);
+    setClickedCorrect(false);
+    setClickedIncorrect(false);
+  };
+
   let animatedValue = new Animated.Value(0);
   let value = 0;
 
@@ -45,21 +86,51 @@ const QuizScreen = () => {
 
   return (
     <View>
-      <Text style={styles.title}>Quiz 1/10</Text>
-      <View>
-        <Animated.View style={[styles.paperFront, frontAnimatedStyle]}>
-          <Card onPress={flipCard} text="What is Lorem Ipsum?" />
-        </Animated.View>
+      <Text style={styles.title}>
+        Card {index + 1} of {cardsArray.length}
+      </Text>
 
-        <Animated.View style={[styles.paperBack, backAnimatedStyle]}>
-          <Card onPress={flipCard} text="Lorem Ipsum is simply dummy text." />
-        </Animated.View>
-      </View>
+      {Platform.OS === "ios" ? (
+        useMemo(() => {
+          return (
+            <View>
+              <Animated.View style={[styles.paperFront, frontAnimatedStyle]}>
+                <Card onPress={flipCard} text={cardsArray[index].question} />
+              </Animated.View>
+              <Animated.View style={[styles.paperBack, backAnimatedStyle]}>
+                <Card onPress={flipCard} text={cardsArray[index].answer} />
+              </Animated.View>
+            </View>
+          );
+        }, [index])
+      ) : (
+        <View>
+          <Animated.View style={[styles.paperFront, frontAnimatedStyle]}>
+            <Card onPress={flipCard} text={cardsArray[index].question} />
+          </Animated.View>
+          <Animated.View style={[styles.paperBack, backAnimatedStyle]}>
+            <Card onPress={flipCard} text={cardsArray[index].answer} />
+          </Animated.View>
+        </View>
+      )}
+
       <View>
-        <MyButton title="Corect" style={{ backgroundColor: "green" }} />
-        <MyButton title="Incorrect" style={{ backgroundColor: "grey" }} />
+        <MyButton
+          title="Corect"
+          style={{ backgroundColor: clickedCorrect ? "green" : "#ccc" }}
+          disabled={clickedCorrect || clickedIncorrect}
+          onPress={correctHandler}
+        />
+        <MyButton
+          title="Incorrect"
+          style={{ backgroundColor: clickedIncorrect ? "red" : "#ccc" }}
+          disabled={clickedCorrect || clickedIncorrect}
+          onPress={inCorrectHandler}
+        />
         <MyButton
           title="NEXT"
+          onPress={nextHandler}
+          disabled={!clickedCorrect && !clickedIncorrect}
           style={{ backgroundColor: Colors.light, width: "80%" }}
         />
       </View>
@@ -79,21 +150,12 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   paperFront: {
-    // marginHorizontal: 15,
-    // minHeight: 200,
-    // borderRadius: 5,
-    // marginBottom: 15,
     backfaceVisibility: "hidden",
   },
   paperBack: {
     position: "absolute",
     width: "100%",
     height: "100%",
-    //top: -245,
-    // marginHorizontal: 15,
-    // minHeight: 200,
-    // borderRadius: 5,
-    // marginBottom: 15,
     backfaceVisibility: "hidden",
   },
 });

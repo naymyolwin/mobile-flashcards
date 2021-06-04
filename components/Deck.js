@@ -15,12 +15,17 @@ const Deck = (props) => {
   if (Platform.OS === "ios") {
     return (
       <View>
-        <TouchableOpacity activeOpacity={0.55} onPress={props.onPress}>
+        <TouchableOpacity
+          activeOpacity={0.55}
+          onPress={props.onPress}
+          disabled={props.disabled}
+        >
           <View style={styles.container}>
             <View style={styles.deck}>
               <View>
                 <Text>
-                  {props.title} - {props.numberOfCard} Cards
+                  {props.title} - {props.numberOfCard}{" "}
+                  {props.numberOfCard > 1 ? "Cards" : "Card"}
                 </Text>
               </View>
               {props.edit ? (
@@ -50,11 +55,13 @@ const Deck = (props) => {
           useForeground={true}
           activeOpacity={0.55}
           onPress={props.onPress}
+          disabled={props.disabled}
         >
           <View style={styles.deck}>
             <View>
               <Text>
-                {props.title} - {props.numberOfCard} Cards
+                {props.title} - {props.numberOfCard}{" "}
+                {props.numberOfCard > 1 ? "Cards" : "Card"}
               </Text>
             </View>
             {props.edit ? (

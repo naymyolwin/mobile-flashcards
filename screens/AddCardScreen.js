@@ -31,7 +31,6 @@ const AddCardScreen = ({ route, navigation }) => {
   return (
     <View>
       <Text style={styles.title}>Add Card</Text>
-      <Text>{deckId.deckId}</Text>
       <ScrollView>
         <View>
           <MyTextInput

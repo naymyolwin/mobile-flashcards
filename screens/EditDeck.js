@@ -6,6 +6,7 @@ import MyTextInput from "../components/MyTextInput";
 import { updateDeck } from "../store/updateDeck";
 import { deckActions } from "../store/deckSlice";
 import { deleteDeck } from "../store/deleteDeck";
+import Colors from "../constants/Colors";
 
 const EditDeck = ({ route, navigation }) => {
   const { deckId } = route.params;
@@ -31,8 +32,7 @@ const EditDeck = ({ route, navigation }) => {
 
   return (
     <View>
-      <Text>Update or Delete Deck</Text>
-      <Text>{deckId}</Text>
+      <Text style={styles.title}>Update or Delete Deck</Text>
       <MyTextInput placeholder="Deck Name" input={deck} setInput={setDeck} />
       <View style={styles.buttons}>
         <MyButton
@@ -60,5 +60,12 @@ const styles = StyleSheet.create({
     width: "100%",
     justifyContent: "center",
     alignItems: "center",
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: "bold",
+    textAlign: "center",
+    margin: 20,
+    color: Colors.text,
   },
 });

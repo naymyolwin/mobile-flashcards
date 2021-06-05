@@ -5,6 +5,8 @@ import HomeScreen from "../screens/HomeScreen";
 import QuizScreen from "../screens/QuizScreen";
 import Colors from "../constants/Colors";
 import Score from "../screens/Score";
+import SingleDeckScreen from "../screens/SingleDeckScreen";
+import AddCardScreen from "../screens/AddCardScreen";
 
 const MainScreenStack = createStackNavigator();
 
@@ -42,6 +44,20 @@ const MainStack = () => {
         options={{
           title: "Your Score",
           headerLeft: () => null,
+        }}
+      />
+      <MainScreenStack.Screen
+        name="SingelDeck"
+        component={SingleDeckScreen}
+        options={{
+          title: "Deck Title",
+        }}
+      />
+      <MainScreenStack.Screen
+        name="AddCard"
+        component={AddCardScreen}
+        options={{
+          title: "Add Card",
         }}
       />
     </MainScreenStack.Navigator>

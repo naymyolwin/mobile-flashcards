@@ -8,7 +8,7 @@ import {
 } from "../utils/notifications";
 
 const Score = ({ route, navigation }) => {
-  const { score } = route.params;
+  const { score, deckId } = route.params;
 
   useEffect(() => {
     clearLocalNotification();
@@ -34,8 +34,12 @@ const Score = ({ route, navigation }) => {
         />
         <MyButton
           title="Start Again"
-          onPress={() => {}}
           style={{ backgroundColor: "purple", width: "60%" }}
+          onPress={() => {
+            navigation.navigate("Quiz", {
+              deckId: deckId,
+            });
+          }}
         />
       </View>
     </View>

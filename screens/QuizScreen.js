@@ -36,10 +36,14 @@ const QuizScreen = ({ route, navigation }) => {
       animatedValue.setValue(0);
     }
     if (index === cardsArray.length - 1) {
-      //==== Clear and Set Notification for tomorrow
-
+      setIndex(0);
+      setCorrect(0);
+      setIncorrect(0);
+      setClickedCorrect(false);
+      setClickedIncorrect(false);
       return navigation.navigate("Score", {
         score: ((correct / (correct + inCorrect)) * 100).toFixed(2),
+        deckId: deckId,
       });
     }
 

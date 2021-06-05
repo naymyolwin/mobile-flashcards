@@ -17,6 +17,8 @@ const AddCardScreen = ({ route, navigation }) => {
   const { deckId } = route.params;
   const dispatch = useDispatch();
 
+  console.log(deckId);
+
   const onSaveHandler = () => {
     const newCard = createNewCard(question, answer, deckId.deckId);
     const cardId = Object.keys(newCard)[0];
@@ -25,7 +27,8 @@ const AddCardScreen = ({ route, navigation }) => {
     setCard(newCard);
     setAnswer("");
     setQuestion("");
-    navigation.navigate("EditDeck");
+    //navigation.navigate("EditDeck");
+    navigation.goBack();
   };
 
   return (

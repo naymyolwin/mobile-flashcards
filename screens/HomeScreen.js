@@ -29,9 +29,9 @@ const HomeScreen = (props) => {
     <Deck
       title={item.name}
       numberOfCard={item.card.length}
-      disabled={item.card.length > 0 ? false : true}
+      //disabled={item.card.length > 0 ? false : true}
       onPress={() => {
-        props.navigation.navigate("Quiz", {
+        props.navigation.navigate("SingelDeck", {
           deckId: item.id,
         });
       }}

@@ -21,6 +21,7 @@ expo start
 
 Create your own Flash cards to help study. You can group all your cards seperate decks.
 And you can create/update/delete cards or decks. if you haven't done a quiz for today, App will remind you at 8PM.
+All the cards and decks that you created will be saved on local async storage.
 
 ## Author
 

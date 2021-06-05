@@ -47,7 +47,7 @@ const EditCardScreen = ({ route, navigation }) => {
 
   return (
     <View>
-      <Text style={styles.title}>Edit Card Form</Text>
+      <Text style={styles.text}>Please enter Question and Answer</Text>
       <ScrollView>
         <View>
           <MyTextInput
@@ -81,11 +81,10 @@ const EditCardScreen = ({ route, navigation }) => {
 export default EditCardScreen;
 
 const styles = StyleSheet.create({
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
+  text: {
+    padding: 20,
     textAlign: "center",
-    margin: 20,
+    fontSize: 18,
     color: Colors.text,
   },
 });

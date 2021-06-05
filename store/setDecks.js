@@ -14,6 +14,7 @@ export const setDecks = async (deck) => {
 
   const Data = await getData();
   const currentDeck = Data !== null ? Data["decks"] : null;
+  const currentCard = Data !== null ? Data["cards"] : null;
 
   let saveObj;
 
@@ -26,7 +27,7 @@ export const setDecks = async (deck) => {
   const save = async () => {
     return await AsyncStorage.setItem(
       STORAGE_KEY,
-      JSON.stringify({ ["decks"]: saveObj })
+      JSON.stringify({ ["decks"]: saveObj, ["cards"]: currentCard })
     );
   };
 

@@ -30,7 +30,7 @@ const EditDeckScreen = ({ route, navigation }) => {
 
   return (
     <View>
-      <Text style={styles.title}>Edit Card !!!!</Text>
+      <Text style={styles.title}>Add or Edit Card</Text>
       <FlatList
         data={cardsArray}
         renderItem={renderItem}

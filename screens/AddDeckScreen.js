@@ -32,9 +32,6 @@ const AddDeckScreen = ({ navigation }) => {
           deckId: item.id,
         });
       }}
-      // onPress={() => {
-      //   props.navigation.navigate("EditDeck");
-      // }}
     />
   );
 

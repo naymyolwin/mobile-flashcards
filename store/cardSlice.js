@@ -1,9 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { cards } from "./Data";
 
 const cardSlice = createSlice({
   name: "cards",
-  initialState: { cards: cards },
+  initialState: { cards: {} },
   reducers: {
     initializeCards(state, action) {
       if (action.payload === null) {

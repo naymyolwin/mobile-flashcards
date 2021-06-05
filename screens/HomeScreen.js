@@ -21,7 +21,6 @@ const HomeScreen = (props) => {
   }, [dispatch]);
 
   const decks = useSelector((state) => state.decks.decks);
-  const cards = useSelector((state) => state.cards.cards);
 
   const decksArray = Object.values(decks).map((deck) => deck);
 
@@ -29,7 +28,6 @@ const HomeScreen = (props) => {
     <Deck
       title={item.name}
       numberOfCard={item.card.length}
-      //disabled={item.card.length > 0 ? false : true}
       onPress={() => {
         props.navigation.navigate("SingelDeck", {
           deckId: item.id,
@@ -41,7 +39,9 @@ const HomeScreen = (props) => {
   return (
     <View>
       <StatusBar barStyle="light-content" backgroundColor={Colors.dark} />
-      <Text style={styles.title}>Start Quiz</Text>
+      <Text style={styles.title}>
+        {decks !== null ? "Start Quiz" : "Add a Deck"}
+      </Text>
       <SafeAreaView>
         <FlatList
           data={decksArray}

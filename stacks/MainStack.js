@@ -34,7 +34,7 @@ const MainStack = () => {
         name="Quiz"
         component={QuizScreen}
         options={{
-          title: "Flash Card Detail",
+          title: "Flash Card",
           headerBackTitle: "Back",
         }}
       />
@@ -50,14 +50,14 @@ const MainStack = () => {
         name="SingelDeck"
         component={SingleDeckScreen}
         options={{
-          title: "Deck Title",
+          title: "Flash Card",
         }}
       />
       <MainScreenStack.Screen
         name="AddCard"
         component={AddCardScreen}
         options={{
-          title: "Add Card",
+          title: "Flash Card",
         }}
       />
     </MainScreenStack.Navigator>

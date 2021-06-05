@@ -17,8 +17,6 @@ const AddCardScreen = ({ route, navigation }) => {
   const { deckId } = route.params;
   const dispatch = useDispatch();
 
-  console.log(deckId);
-
   const onSaveHandler = () => {
     const newCard = createNewCard(question, answer, deckId.deckId);
     const cardId = Object.keys(newCard)[0];
@@ -27,13 +25,12 @@ const AddCardScreen = ({ route, navigation }) => {
     setCard(newCard);
     setAnswer("");
     setQuestion("");
-    //navigation.navigate("EditDeck");
     navigation.goBack();
   };
 
   return (
     <View>
-      <Text style={styles.title}>Add Card</Text>
+      <Text style={styles.text}>Please enter Question and Answer</Text>
       <ScrollView>
         <View>
           <MyTextInput
@@ -49,8 +46,13 @@ const AddCardScreen = ({ route, navigation }) => {
         </View>
         <View style={styles.container}>
           <MyButton
+            disabled={answer === "" ? true : question === "" ? true : false}
             title="Save"
-            style={{ backgroundColor: "green", width: "60%" }}
+            style={{
+              backgroundColor:
+                answer === "" ? "grey" : question === "" ? "grey" : "green",
+              width: "60%",
+            }}
             onPress={onSaveHandler}
           />
         </View>
@@ -62,11 +64,10 @@ const AddCardScreen = ({ route, navigation }) => {
 export default AddCardScreen;
 
 const styles = StyleSheet.create({
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
+  text: {
+    padding: 20,
     textAlign: "center",
-    margin: 20,
+    fontSize: 18,
     color: Colors.text,
   },
 });

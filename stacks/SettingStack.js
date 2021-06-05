@@ -79,7 +79,7 @@ const SettingStack = () => {
         name="AddCard"
         component={AddCardScreen}
         options={{
-          title: "Add Card",
+          title: "Flash Card",
         }}
       />
       <SettingScreenStack.Screen

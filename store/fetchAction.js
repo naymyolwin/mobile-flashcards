@@ -15,12 +15,13 @@ export const fetchData = () => {
     };
 
     const Data = await getData();
-    const Decks = Data !== null ? Data["decks"] : null;
-    const Cards = Data !== null ? Data["cards"] : null;
+
+    const decks = Data !== null ? Data["decks"] : null;
+    const cards = Data !== null ? Data["cards"] : null;
 
     try {
-      dispatch(deckActions.initializeDecks(Decks));
-      dispatch(cardActions.initializeCards(Cards));
+      dispatch(deckActions.initializeDecks(decks));
+      dispatch(cardActions.initializeCards(cards));
     } catch (error) {
       console.log("Error in fetchAction, dispatch");
     }

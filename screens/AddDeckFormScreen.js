@@ -27,9 +27,9 @@ const AddDeckFormScreen = (props) => {
         <Text style={styles.text}>Please Enter the new Deck Name</Text>
         <MyTextInput placeholder="Deck Name" input={deck} setInput={setDeck} />
         <MyButton
+          disabled={deck === "" ? true : false}
           title="Add"
-          style={{ backgroundColor: Colors.light }}
-          //deckInput={deckInput}
+          style={{ backgroundColor: deck === "" ? "grey" : Colors.light }}
           onPress={addDeckHandler}
         />
       </View>

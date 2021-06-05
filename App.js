@@ -1,18 +1,41 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import { Provider } from "react-redux";
+import * as Notifications from "expo-notifications";
 
 import MainStack from "./stacks/MainStack";
 import Colors from "./constants/Colors";
 import SettingStack from "./stacks/SettingStack";
 import { store } from "./store/store";
+import { setLocalNotification } from "./utils/notifications";
 
 const Tab = createBottomTabNavigator();
 
 const App = () => {
+  useEffect(() => {
+    const requestPermissionsAsync = async () => {
+      return await Notifications.requestPermissionsAsync({
+        android: {
+          allowAlert: true,
+          allowSound: true,
+          allowBadge: true,
+          allowAnnouncements: true,
+        },
+        ios: {
+          allowAlert: true,
+          allowBadge: true,
+          allowSound: true,
+          allowAnnouncements: true,
+        },
+      });
+    };
+
+    requestPermissionsAsync();
+    setLocalNotification();
+  }, []);
+
   return (
     <Provider store={store}>
       <NavigationContainer>

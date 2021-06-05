@@ -36,6 +36,8 @@ const QuizScreen = ({ route, navigation }) => {
       animatedValue.setValue(0);
     }
     if (index === cardsArray.length - 1) {
+      //==== Clear and Set Notification for tomorrow
+
       return navigation.navigate("Score", {
         score: ((correct / (correct + inCorrect)) * 100).toFixed(2),
       });
@@ -128,7 +130,7 @@ const QuizScreen = ({ route, navigation }) => {
           onPress={inCorrectHandler}
         />
         <MyButton
-          title="NEXT"
+          title={index === cardsArray.length - 1 ? "FINISH" : "NEXT"}
           onPress={nextHandler}
           disabled={!clickedCorrect && !clickedIncorrect}
           style={{ backgroundColor: Colors.light, width: "80%" }}

@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Colors from "../constants/Colors";
-import MyButton from "./MyButton";
+import MyButton from "../components/MyButton";
+import {
+  clearLocalNotification,
+  setLocalNotification,
+} from "../utils/notifications";
 
 const Score = ({ route, navigation }) => {
   const { score } = route.params;
+
+  useEffect(() => {
+    clearLocalNotification();
+    setLocalNotification();
+  }, []);
+
   return (
     <View style={styles.container}>
       <View>
@@ -14,13 +24,20 @@ const Score = ({ route, navigation }) => {
           {score} %
         </Text>
       </View>
-      <MyButton
-        title="Go Home"
-        onPress={() => {
-          navigation.navigate("HomeScreen");
-        }}
-        style={{ backgroundColor: "green", width: "60%" }}
-      />
+      <View style={styles.buttons}>
+        <MyButton
+          title="Go Home"
+          onPress={() => {
+            navigation.navigate("HomeScreen");
+          }}
+          style={{ backgroundColor: "green", width: "60%" }}
+        />
+        <MyButton
+          title="Start Again"
+          onPress={() => {}}
+          style={{ backgroundColor: "purple", width: "60%" }}
+        />
+      </View>
     </View>
   );
 };
@@ -45,5 +62,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     margin: 20,
+  },
+  buttons: {
+    width: "100%",
   },
 });

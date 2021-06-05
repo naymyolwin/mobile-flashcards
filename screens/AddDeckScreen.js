@@ -41,7 +41,7 @@ const AddDeckScreen = ({ navigation }) => {
   return (
     <View>
       <StatusBar barStyle="light-content" backgroundColor={Colors.dark} />
-      <Text style={styles.title}>Edit Deck HERE</Text>
+      <Text style={styles.title}>Edit Deck</Text>
       <SafeAreaView>
         <FlatList
           data={decksArray}

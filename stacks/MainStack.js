@@ -4,7 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "../screens/HomeScreen";
 import QuizScreen from "../screens/QuizScreen";
 import Colors from "../constants/Colors";
-import Score from "../components/Score";
+import Score from "../screens/Score";
 
 const MainScreenStack = createStackNavigator();
 

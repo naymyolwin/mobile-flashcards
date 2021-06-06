@@ -101,7 +101,11 @@ const QuizScreen = ({ route, navigation }) => {
           return (
             <View>
               <Animated.View style={[styles.paperFront, frontAnimatedStyle]}>
-                <Card onPress={flipCard} text={cardsArray[index].question} />
+                <Card
+                  onPress={flipCard}
+                  text={cardsArray[index].question}
+                  showAnswer="true"
+                />
               </Animated.View>
               <Animated.View style={[styles.paperBack, backAnimatedStyle]}>
                 <Card onPress={flipCard} text={cardsArray[index].answer} />
@@ -112,7 +116,11 @@ const QuizScreen = ({ route, navigation }) => {
       ) : (
         <View>
           <Animated.View style={[styles.paperFront, frontAnimatedStyle]}>
-            <Card onPress={flipCard} text={cardsArray[index].question} />
+            <Card
+              onPress={flipCard}
+              text={cardsArray[index].question}
+              showAnswer="true"
+            />
           </Animated.View>
           <Animated.View style={[styles.paperBack, backAnimatedStyle]}>
             <Card onPress={flipCard} text={cardsArray[index].answer} />

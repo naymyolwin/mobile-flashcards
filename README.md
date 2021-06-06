@@ -17,6 +17,10 @@ expo install
 expo start
 ```
 
+## Platform
+
+Flash Card work on both IOS and Andriod.
+
 ## About
 
 Create your own Flash cards to help study. You can group all your cards seperate decks.

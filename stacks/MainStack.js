@@ -8,6 +8,10 @@ import Score from "../screens/Score";
 import SingleDeckScreen from "../screens/SingleDeckScreen";
 import AddCardScreen from "../screens/AddCardScreen";
 
+import AddHeaderButton from "../components/AddHeaderButton";
+import { HeaderButtons, Item } from "react-navigation-header-buttons";
+import AddDeckFormScreen from "../screens/AddDeckFormScreen";
+
 const MainScreenStack = createStackNavigator();
 
 const MainStack = () => {
@@ -26,9 +30,19 @@ const MainStack = () => {
         name="HomeScreen"
         mode="modal"
         component={HomeScreen}
-        options={{
+        options={({ navigation }) => ({
           title: "Flash Card",
-        }}
+          headerRight: () => (
+            <HeaderButtons HeaderButtonComponent={AddHeaderButton}>
+              <Item
+                title="Add Deck"
+                onPress={() => {
+                  navigation.navigate("AddDeckForm");
+                }}
+              />
+            </HeaderButtons>
+          ),
+        })}
       />
       <MainScreenStack.Screen
         name="Quiz"
@@ -58,6 +72,13 @@ const MainStack = () => {
         component={AddCardScreen}
         options={{
           title: "Flash Card",
+        }}
+      />
+      <MainScreenStack.Screen
+        name="AddDeckForm"
+        component={AddDeckFormScreen}
+        options={{
+          title: "Add Deck",
         }}
       />
     </MainScreenStack.Navigator>

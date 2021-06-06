@@ -53,5 +53,6 @@ export const setLocalNotification = async () => {
       trigger: tomorrow,
     });
     AsyncStorage.setItem(NOTIFICATION_KEY, JSON.stringify(true));
+    console.log(`Notify at : ${tomorrow}`);
   }
 };

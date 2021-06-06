@@ -9,7 +9,7 @@ import Colors from "../constants/Colors";
 import { deckActions } from "../store/deckSlice";
 import { createNewDeck } from "../store/createNewDeck";
 
-const AddDeckFormScreen = (props) => {
+const AddDeckFormScreen = ({ navigation }) => {
   const [deck, setDeck] = useState("");
 
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ const AddDeckFormScreen = (props) => {
     dispatch(deckActions.addDeck(newDeck));
     setDecks(newDeck);
     setDeck("");
-    props.navigation.navigate("AddDeck");
+    navigation.goBack();
   };
   return (
     <ScrollView>

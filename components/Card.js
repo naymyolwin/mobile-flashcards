@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, TouchableWithoutFeedback, View } from "react-native";
+import Colors from "../constants/Colors";
 
 const Card = (props) => {
   return (
@@ -7,6 +8,11 @@ const Card = (props) => {
       <View style={styles.container}>
         <View style={styles.card}>
           <Text>{props.text}</Text>
+          {props.showAnswer === "true" ? (
+            <View style={styles.answer}>
+              <Text style={styles.answerText}>Flip to show answer</Text>
+            </View>
+          ) : null}
         </View>
       </View>
     </TouchableWithoutFeedback>
@@ -40,5 +46,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 20,
     elevation: 20,
+  },
+  answer: {
+    position: "absolute",
+    top: "85%",
+  },
+  answerText: {
+    color: Colors.light,
   },
 });

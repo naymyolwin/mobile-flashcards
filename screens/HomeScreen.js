@@ -13,7 +13,7 @@ import { fetchData } from "../store/fetchAction";
 import Deck from "../components/Deck";
 import Colors from "../constants/Colors";
 
-const HomeScreen = (props) => {
+const HomeScreen = ({ navigation }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -29,7 +29,7 @@ const HomeScreen = (props) => {
       title={item.name}
       numberOfCard={item.card.length}
       onPress={() => {
-        props.navigation.navigate("SingelDeck", {
+        navigation.navigate("SingelDeck", {
           deckId: item.id,
         });
       }}
